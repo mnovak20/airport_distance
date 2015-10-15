@@ -1,0 +1,32 @@
+
+
+
+.airport-table{
+	margin:5em auto auto auto;
+  td{
+		width:25em;
+	}
+	.airport-info{
+		padding:1em;
+	}
+}
+
+.nautical-distance {
+	text-align: center;
+	margin-top:2em;
+	font-size:1.3em;
+}
+
+.dist-value{
+	font-weight: bold;
+}
+
+
+.google-map{
+	width:70%;
+	height:30em;
+	top:22em;
+	left:15%;
+	position:absolute;
+}
+

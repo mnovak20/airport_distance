@@ -1,0 +1,56 @@
+
+
+<div>
+	<table class="airport-table">
+		<tr>
+		<th align="left">Origin Airport</th>
+		<th align="left">Destination Airport</th>
+		</tr>
+		<tr>
+			<td>
+				<div class="origin-field" >
+				<input type="text" ng-model="origin" typeahead-on-select="findAirportElement()" placeholder="Enter origin airport" typeahead="name for name in usAirportNames |filter:$viewValue| limitTo:15" class="form-control">
+				</div>
+			</td>
+			<td>
+				<div class="destination-field">
+				<input type="text" ng-model="destination" typeahead-on-select="findAirportElement()" placeholder="Enter destination airport" typeahead="name for name in usAirportNames |filter:$viewValue| limitTo:15" class="form-control">
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="airport-info" ng-if="selectedAirport1">
+					<div><span>Name: </span><span ng-bind="selectedAirport1[1]"></span></div>
+					<div><span>Code: </span><span ng-bind="selectedAirport1[4]"></span></div>
+					<div><span>Lat: </span><span ng-bind="selectedAirport1[6]"></span><span>, Lng: </span><span ng-bind="selectedAirport1[7]"></span></div>
+				</div>
+			</td>
+			<td>
+				<div class="airport-info" ng-if="selectedAirport2">
+					<div><span>Name: </span><span ng-bind="selectedAirport2[1]"></span></div>
+					<div><span>Code: </span><span ng-bind="selectedAirport2[4]"></span></div>
+					<div><span>Lat: </span><span ng-bind="selectedAirport2[6]"></span><span>, Lng: </span><span ng-bind="selectedAirport2[7]"></span></div>
+				</div>
+			</td>
+
+		</tr>
+	</table>
+
+
+	<div class="nautical-distance" ng-if="selectedAirport1 && selectedAirport2">
+		Distance : <span class="dist-value"ng-bind="nauticalDist"></span> nautical miles
+	</div>
+
+	<map class="google-map" center="39.8282, -98.5795" zoom="4">
+		<shape ng-if="airport2coords && airport1coords" name="polyline" path="[
+      {{airport1coords}},
+      {{airport2coords}}
+      
+    ]" geodesic="true" stroke-color="#FF0000" stroke-opacity="1.0" stroke-weight="2">
+  </shape>
+
+	</map>
+
+
+</div>
